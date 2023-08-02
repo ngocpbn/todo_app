@@ -36,6 +36,15 @@ class TaskOverview extends StatelessWidget {
                   const TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700),
             ),
           ),
+          const Divider(
+            color: Color.fromARGB(
+              255,
+              117,
+              114,
+              114,
+            ),
+            thickness: 0.3,
+          ),
           Container(
             margin:
                 const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 10.0),
@@ -67,6 +76,7 @@ class TaskOverview extends StatelessWidget {
             ),
           ),
           Container(
+            // alignment: AlignmentDirectional.center,
             margin:
                 const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 10.0),
             child: Row(

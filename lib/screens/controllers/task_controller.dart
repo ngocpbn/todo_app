@@ -11,6 +11,10 @@ class TaskController extends GetxController {
   final RxList<Task> _inProgress = <Task>[].obs;
   final RxList<Task> _finished = <Task>[].obs;
 
+  List<Task> get inQueue => _inQueue.value;
+  List<Task> get inProgress => _inProgress.value;
+  List<Task> get finished => _finished.value;
+
   RxInt inQueueLength() {
     return _inQueue.length.obs;
   }
@@ -23,15 +27,17 @@ class TaskController extends GetxController {
     return _finished.length.obs;
   }
 
-  void addToInQueue(Task t) {
-    _inQueue.add(t);
-  }
+  void addTask(Task task) {
+    List<Task> tasks = getTaskList();
+    tasks.add(task);
+    storageDevice.saveTasksToCache(tasks);
 
-  void addToInProgress(Task t) {
-    _inProgress.add(t);
-  }
-
-  void addToFinished(Task t) {
-    _finished.add(t);
+    if (task.status == 0) {
+      _inQueue.add(task);
+    } else if (task.status == 1) {
+      _inProgress.add(task);
+    } else {
+      _finished.add(task);
+    }
   }
 }

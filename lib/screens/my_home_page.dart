@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/common/colors.dart';
 import 'package:todo_app/screens/controllers/task_controller.dart';
+import 'package:todo_app/screens/controllers/task_state_ctrl.dart';
 // import 'package:todo_app/screens/general_task_listview/view/general_task_listview.dart';
 // import 'package:todo_app/screens/controllers/init_controllers/init_dependency.dart';
 
@@ -11,6 +12,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TaskController taskController = Get.find();
+    TaskStateController taskStateController = Get.find();
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -69,8 +71,9 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () =>
-                    Get.toNamed("/inQueue", parameters: {"matchingKey": "0"}),
+                onTap: () => Get.toNamed("/inQueue", parameters: {
+                  "matchingKey": taskStateController.setState(0).toString()
+                }),
                 child: Container(
                   margin: const EdgeInsets.only(
                       left: 20.0, right: 20.0, top: 10.0, bottom: 10.0),
@@ -120,8 +123,9 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () => Get.toNamed("/inProgress",
-                    parameters: {"matchingKey": "1"}),
+                onTap: () => Get.toNamed("/inProgress", parameters: {
+                  "matchingKey": taskStateController.setState(1).toString()
+                }),
                 child: Container(
                   margin: const EdgeInsets.only(
                       left: 20.0, right: 20.0, top: 10.0, bottom: 10.0),
@@ -171,8 +175,9 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () =>
-                    Get.toNamed("/finished", parameters: {"matchingKey": "2"}),
+                onTap: () => Get.toNamed("/finished", parameters: {
+                  "matchingKey": taskStateController.setState(2).toString()
+                }),
                 child: Container(
                   margin: const EdgeInsets.only(
                       left: 20.0, right: 20.0, top: 10.0, bottom: 10.0),

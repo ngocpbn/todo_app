@@ -5,13 +5,11 @@ import 'package:todo_app/screens/task_overview.dart';
 
 class TaskTile extends StatelessWidget {
   final Task task;
-  final Color borderColor;
-  final Color shadowColor;
-  const TaskTile(
-      {super.key,
-      required this.task,
-      required this.borderColor,
-      required this.shadowColor});
+
+  const TaskTile({
+    super.key,
+    required this.task,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +23,13 @@ class TaskTile extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(
-              color: borderColor,
+              color: Colors.black26,
               // width: 2.0,
             ),
             borderRadius: const BorderRadius.all(Radius.circular(10)),
             boxShadow: [
               BoxShadow(
-                color: shadowColor,
+                color: Colors.grey[400] as Color,
                 spreadRadius: 3,
                 blurRadius: 5,
                 offset: const Offset(4, 5),

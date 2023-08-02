@@ -9,6 +9,9 @@ class StorageDevice extends GetxService {
   late final SharedPreferences _prefs;
   Future<StorageDevice> init() async {
     _prefs = await SharedPreferences.getInstance();
+    if (_prefs.getString("storage") == null) {
+      await _prefs.setString("storage", jsonEncode(<Task>[]));
+    }
     return this;
   }
 
